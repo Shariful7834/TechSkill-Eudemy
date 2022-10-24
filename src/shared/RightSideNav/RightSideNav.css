@@ -1,0 +1,6 @@
+.linkHover {
+  background-color: white;
+}
+.linkHover:hover {
+  background-color: aquamarine;
+}
