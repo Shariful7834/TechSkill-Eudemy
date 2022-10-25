@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { AuthContext } from "../../context/UserContext";
 const Register = () => {
-  const { signUpUser } = useContext(AuthContext);
+  const { signUpUser, googleProvider, user } = useContext(AuthContext);
+  const [error, setError] = useState();
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,6 +16,14 @@ const Register = () => {
     const password = form.password.value;
     const confirm = form.confirm.value;
     const photoUrl = form.photoUrl.value;
+    if (password.length < 6) {
+      setError("Password should be more than 6 character");
+    }
+
+    if (password !== confirm) {
+      setError("Your password did not matched");
+      return;
+    }
     signUpUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -22,23 +31,35 @@ const Register = () => {
       })
       .then((error) => console.error(error));
   };
+  const handleGoogle = () => {
+    googleProvider()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .then((error) => console.error(error));
+  };
+
   return (
     <div>
-      <Container>
+      <Container className="vh-100 mt-5">
         <Row className=" d-flex justify-content-center ">
           <Col md={8} lg={6} xs={9}>
-            <div className="border border-3 border-primary"></div>
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">Sign Up</h2>
-                  <p className=" mb-5">Please enter your login and password!</p>
+                  <h2 className="fw-bold mb-2 text-uppercase text-center">
+                    Sign Up
+                  </h2>
+                  <p className=" mb-5 text-center">
+                    Please Fill up the form registration!
+                  </p>
                   <div className="mb-3">
                     <Form onSubmit={handleSignUp}>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control
                           type="text"
-                          name="Full Name"
+                          name="fullName"
                           placeholder="Full Name"
                           required
                         />
@@ -100,7 +121,11 @@ const Register = () => {
                       </div>
                       <div className="mt-3 ">
                         <ButtonGroup vertical className="w-100">
-                          <Button variant="outline-primary" className="mb-3">
+                          <Button
+                            onClick={handleGoogle}
+                            variant="outline-primary"
+                            className="mb-3"
+                          >
                             <FaGoogle className="me-2" />
                             Sign Up with Google
                           </Button>

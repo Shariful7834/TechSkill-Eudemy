@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
@@ -8,7 +8,9 @@ import { AuthContext } from "../../context/UserContext";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
-
+  let navigate = useNavigate();
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleSignIn = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,15 +21,16 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        form.reset();
+        navigate(from, { replace: true });
       })
       .then((error) => console.error(error));
   };
   return (
     <div>
-      <Container>
+      <Container className="vh-100 mt-5">
         <Row className=" d-flex justify-content-center ">
           <Col md={8} lg={6} xs={9}>
-            <div className="border border-3 border-primary"></div>
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">

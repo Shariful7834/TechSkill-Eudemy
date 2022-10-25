@@ -1,12 +1,28 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import {
+  Navbar,
+  Container,
+  Nav,
+  Button,
+  Image,
+  Tooltip,
+  OverlayTrigger,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
-import { Button, useContext, Image } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/UserContext";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  // const signOutUser = () => {
+  //   logOutUser()
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //     })
+  //     .then((error) => console.error(error));
+  // };
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -19,14 +35,47 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mx-auto ">
-            <Nav.Link href="#features">All Courses</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <Nav.Link href="#pricing">Blogs</Nav.Link>
+          <Nav className="mx-auto  ">
+            <Link
+              style={{
+                textDecoration: "none",
+                marginRight: "20px",
+                color: "white",
+                fontSize: "20px",
+              }}
+              to="/courses"
+            >
+              Courses
+            </Link>
+            <Link
+              style={{
+                textDecoration: "none",
+                marginRight: "20px",
+                color: "white",
+                fontSize: "20px",
+              }}
+              to="/courses"
+            >
+              Pricing
+            </Link>
+            <Link
+              style={{
+                textDecoration: "none",
+                marginRight: "20px",
+                color: "white",
+                fontSize: "20px",
+              }}
+              to="/blogs"
+            >
+              Blogs
+            </Link>
           </Nav>
           <Nav>
             {user?.uid ? (
-              <Button style={{ height: "40px", marginTop: "5px" }}>
+              <Button
+                style={{ height: "40px", marginTop: "5px" }}
+                onClick={logOut}
+              >
                 LogOut
               </Button>
             ) : (
@@ -40,18 +89,36 @@ const Header = () => {
             <Nav.Link
               style={{ height: "40px", marginTop: "5px" }}
               href="#deets"
-            >
-              {user?.displayName}
-            </Nav.Link>
+            ></Nav.Link>
             <div>
               <Nav.Link>
                 {user?.uid ? (
                   <>
-                    <Image
-                      roundedCircle
-                      style={{ height: "40px", width: "40px" }}
-                      src={user?.photoURL}
-                    ></Image>
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={
+                        <Tooltip id="button-tooltip-2">
+                          {user?.displayName}
+                        </Tooltip>
+                      }
+                    >
+                      {({ ref, ...triggerHandler }) => (
+                        <span
+                          variant="light"
+                          {...triggerHandler}
+                          className="d-inline-flex align-items-center rounded-3"
+                        >
+                          <Image
+                            roundedCircle
+                            style={{ height: "40px", width: "40px" }}
+                            src={user?.photoURL}
+                            ref={ref}
+                          />
+                        </span>
+                      )}
+                    </OverlayTrigger>
+
+                    <Image></Image>
                   </>
                 ) : (
                   <>
