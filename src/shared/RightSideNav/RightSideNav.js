@@ -1,7 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";

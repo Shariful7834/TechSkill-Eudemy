@@ -117,8 +117,6 @@ const Header = () => {
                         </span>
                       )}
                     </OverlayTrigger>
-
-                    <Image></Image>
                   </>
                 ) : (
                   <>
@@ -128,7 +126,6 @@ const Header = () => {
               </Nav.Link>
             </div>
           </Nav>
-          <div className="d-lg-none">{/* <LeftSideNav></LeftSideNav> */}</div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

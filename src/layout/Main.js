@@ -4,6 +4,9 @@ import Header from "../shared/Header/Header";
 import { Outlet } from "react-router-dom";
 
 import Footer from "../shared/Footer/Footer";
+import { Col, Container, Row } from "react-bootstrap";
+import LeftSideNav from "../shared/LeftSideNav/LeftSideNav";
+import RightSideNav from "../shared/RightSideNav/RightSideNav";
 
 const Main = () => {
   return (
@@ -14,7 +17,9 @@ const Main = () => {
       {/* <Container className="mt-5">
         <Row>
           <Col lg="9" className="text-center">
-            <Outlet></Outlet>
+            <LeftSideNav>
+              <Outlet></Outlet>
+            </LeftSideNav>
           </Col>
           <Col lg="3">
             <RightSideNav></RightSideNav>

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Home from "../pages/Home/Home";
+import LeftSideNav from "../shared/LeftSideNav/LeftSideNav";
 import Login from "../shared/Login/Login";
 import Register from "../shared/Register/Register";
 import RightSideNav from "../shared/RightSideNav/RightSideNav";
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
         path: "/courses",
         element: <RightSideNav></RightSideNav>,
       },
+
       {
         path: "/login",
         element: <Login></Login>,
@@ -27,5 +29,10 @@ export const router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+  },
+  {
+    path: "/courseCategory/:id",
+    loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+    element: <LeftSideNav></LeftSideNav>,
   },
 ]);

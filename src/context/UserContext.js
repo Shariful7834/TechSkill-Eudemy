@@ -15,34 +15,41 @@ const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState("");
-  const [loader, setLoader] = useState(true);
+  const [loading, setLoading] = useState(true);
   const provider = new GoogleAuthProvider();
   const signUpUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
-    setLoader(true);
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const googleProvider = () => {
-    setLoader(true);
+    setLoading(true);
     return signInWithPopup(auth, provider);
   };
   const logOut = () => {
-    setLoader(true);
+    setLoading(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoader(false);
+      setLoading(false);
       console.log(currentUser);
     });
   }, []);
-  const authInfo = { user, signIn, signUpUser, googleProvider, logOut };
+  const authInfo = {
+    user,
+    signIn,
+    signUpUser,
+    googleProvider,
+    logOut,
+    loading,
+  };
   return (
     <div>
       <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

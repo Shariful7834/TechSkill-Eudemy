@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/UserContext";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
   let navigate = useNavigate();
   let location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -24,7 +25,10 @@ const Login = () => {
         form.reset();
         navigate(from, { replace: true });
       })
-      .then((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
   return (
     <div>
@@ -62,10 +66,8 @@ const Login = () => {
                         className="mb-3"
                         controlId="formBasicCheckbox"
                       >
-                        <p className="small text-start">
-                          <a className="text-primary " href="#!">
-                            Forgot password?
-                          </a>
+                        <p className="small text-start mt-2 text-danger">
+                          {error}
                         </p>
                       </Form.Group>
                       <div className="d-grid">

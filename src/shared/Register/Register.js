@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { AuthContext } from "../../context/UserContext";
 const Register = () => {
@@ -28,6 +28,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        <Navigate to="/"></Navigate>;
       })
       .then((error) => console.error(error));
   };
@@ -36,8 +37,9 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        <Navigate to="/"></Navigate>;
       })
-      .then((error) => console.error(error));
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -108,10 +110,8 @@ const Register = () => {
                         className="mb-3"
                         controlId="formBasicCheckbox"
                       >
-                        <p className="small text-start">
-                          <a className="text-primary " href="#!">
-                            Forgot password?
-                          </a>
+                        <p className="small text-start mt-2 text-danger">
+                          {error}
                         </p>
                       </Form.Group>
                       <div className="d-grid">
