@@ -1,10 +1,14 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FaUserAlt } from "react-icons/fa";
+import { Button, useContext, Image } from "react";
+import { AuthContext } from "../../context/UserContext";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
-    <Navbar collapseOnSelect expand="lg" bg="white" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>
           <Link style={{ textDecoration: "none" }} to="/">
@@ -16,15 +20,13 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto ">
-            <Nav.Link href="#features">All News</Nav.Link>
+            <Nav.Link href="#features">All Courses</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#pricing">Blogs</Nav.Link>
           </Nav>
-          {/* <Nav>
+          <Nav>
             {user?.uid ? (
-              <Button
-                style={{ height: "40px", marginTop: "5px" }}
-                onClick={logOut}
-              >
+              <Button style={{ height: "40px", marginTop: "5px" }}>
                 LogOut
               </Button>
             ) : (
@@ -58,7 +60,7 @@ const Header = () => {
                 )}
               </Nav.Link>
             </div>
-          </Nav> */}
+          </Nav>
           <div className="d-lg-none">{/* <LeftSideNav></LeftSideNav> */}</div>
         </Navbar.Collapse>
       </Container>

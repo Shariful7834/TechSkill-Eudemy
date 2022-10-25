@@ -5,6 +5,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { ListGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import BrandCarosoul from "../BrandCarosoul/BrandCarosoul";
 import "./RightSideNav.css";
 const RightSideNav = () => {
   const [courseCategories, setCourseCategories] = useState([]);
@@ -17,19 +18,22 @@ const RightSideNav = () => {
 
   return (
     <div>
-      <ButtonGroup vertical>
-        <Button
-          variant="outline-primary"
-          className="mb-2"
-          style={{ width: "305px" }}
-        >
-          <FaGoogle className="me-2" />
-          Google with Login
-        </Button>
-        <Button variant="outline-dark">
-          <FaGithub className="me-2" /> Github with login
-        </Button>
-      </ButtonGroup>
+      <div className="mt-5">
+        <h2>Select course</h2>
+        {courseCategories.map((courseCategory) => (
+          <Link
+            key={courseCategory.id}
+            style={{ textDecoration: "none", fontSize: "18px" }}
+            to={`/courseCategory/${courseCategory.id}`}
+          >
+            <ListGroup>
+              <ListGroup.Item className="mb-2 linkHover">
+                {courseCategory.name}
+              </ListGroup.Item>
+            </ListGroup>
+          </Link>
+        ))}
+      </div>
       <hr
         className="mt-5"
         style={{
@@ -39,20 +43,8 @@ const RightSideNav = () => {
           borderStyle: "dotted",
         }}
       />
-      <div className="mt-5">
-        <h2>Select course</h2>
-        {courseCategories.map((courseCategory) => (
-          <ListGroup key={courseCategory.id}>
-            <ListGroup.Item className="mb-2 linkHover">
-              <Link
-                style={{ textDecoration: "none", fontSize: "18px" }}
-                to={`/courseCategory/${courseCategory.id}`}
-              >
-                {courseCategory.name}
-              </Link>
-            </ListGroup.Item>
-          </ListGroup>
-        ))}
+      <div>
+        <BrandCarosoul></BrandCarosoul>
       </div>
     </div>
   );
