@@ -9,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <div>
-      <MDBFooter
+      {/* <MDBFooter
         className="text-center text-white"
         style={{ backgroundColor: "#0a4275" }}
       >
@@ -33,7 +33,7 @@ const Footer = () => {
             MDBootstrap.com
           </a>
         </div>
-      </MDBFooter>
+      </MDBFooter> */}
     </div>
   );
 };

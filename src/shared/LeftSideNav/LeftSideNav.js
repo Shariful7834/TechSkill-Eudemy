@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
+import Courses from "../../pages/Courses/Courses";
 
 const LeftSideNav = () => {
   const [courseCategories, setCourseCategories] = useState([]);
@@ -14,23 +15,14 @@ const LeftSideNav = () => {
     <Container>
       <Row>
         <Col lg="12">
-          <div>
-            <h1>This is left side for course {courseCategories.length} </h1>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta a
-              magni est doloribus rerum cumque iusto maxime debitis non nisi
-              numquam architecto blanditiis, possimus iste earum omnis officia
-              quas vitae dignissimos ut eveniet sapiente cupiditate. Nesciunt,
-              quas commodi perspiciatis numquam, optio rerum voluptate beatae
-              repellendus in aliquam tempore fugit tenetur! Lorem ipsum dolor,
-              sit amet consectetur adipisicing elit. Soluta a magni est
-              doloribus rerum cumque iusto maxime debitis non nisi numquam
-              architecto blanditiis, possimus iste earum omnis officia quas
-              vitae dignissimos ut eveniet sapiente cupiditate. Nesciunt, quas
-              commodi perspiciatis numquam, optio rerum voluptate beatae
-              repellendus in aliquam tempore fugit tenetur!
-            </p>
-          </div>
+          <h1 className="text-center mb-5">
+            This is left side for course {courseCategories.length}
+          </h1>
+          <Row lg="3">
+            {courseCategories.map((course) => (
+              <Courses key={course._id} course={course}></Courses>
+            ))}
+          </Row>
         </Col>
       </Row>
     </Container>

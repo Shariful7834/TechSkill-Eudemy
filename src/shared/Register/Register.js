@@ -5,17 +5,20 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { AuthContext } from "../../context/UserContext";
+import { toast } from "react-hot-toast";
 const Register = () => {
-  const { signUpUser, googleProvider, user } = useContext(AuthContext);
+  const { signUpUser, googleProvider, user, updateUserProfile } =
+    useContext(AuthContext);
   const [error, setError] = useState();
+
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
-    const fullName = form.fullName.value;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const confirm = form.confirm.value;
-    const photoUrl = form.photoUrl.value;
+    const photoURL = form.photoURL.value;
     if (password.length < 6) {
       setError("Password should be more than 6 character");
     }
@@ -28,10 +31,25 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setError("");
+        form.reset();
+        handleUpdateUserProfile(name, photoURL);
+        toast.success("Successfully registered");
         <Navigate to="/"></Navigate>;
       })
-      .then((error) => console.error(error));
+      .catch((error) => console.error(error));
   };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   const handleGoogle = () => {
     googleProvider()
       .then((result) => {
@@ -61,7 +79,7 @@ const Register = () => {
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control
                           type="text"
-                          name="fullName"
+                          name="name"
                           placeholder="Full Name"
                           required
                         />
@@ -69,7 +87,7 @@ const Register = () => {
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control
                           type="text"
-                          name="photoUrl"
+                          name="photoURL"
                           placeholder="Image URL"
                           required
                         />
@@ -116,7 +134,7 @@ const Register = () => {
                       </Form.Group>
                       <div className="d-grid">
                         <Button variant="primary" type="submit">
-                          Login
+                          Submit
                         </Button>
                       </div>
                       <div className="mt-3 ">

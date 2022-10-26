@@ -5,9 +5,10 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { AuthContext } from "../../context/UserContext";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, user } = useContext(AuthContext);
   const [error, setError] = useState("");
   let navigate = useNavigate();
   let location = useLocation();
@@ -23,6 +24,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        toast.success("Successfully logind");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -37,13 +39,19 @@ const Login = () => {
           <Col md={8} lg={6} xs={9}>
             <Card className="shadow">
               <Card.Body>
-                <div className="mb-3 mt-md-4">
+                <div className="mb-3 mt-md-4 text-center">
                   <h2 className="fw-bold mb-2 text-uppercase ">Login</h2>
-                  <p className=" mb-5">Please enter your login and password!</p>
+                  <p className=" mb-5 text-center">
+                    Please enter your login and password!
+                  </p>
                   <div className="mb-3">
                     <Form onSubmit={handleSignIn}>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Group
+                        className="mb-3 w-75 mx-auto "
+                        controlId="formBasicEmail"
+                      >
                         <Form.Control
+                          className="fs-4"
                           type="email"
                           name="email"
                           placeholder="Enter email"
@@ -52,10 +60,11 @@ const Login = () => {
                       </Form.Group>
 
                       <Form.Group
-                        className="mb-3"
+                        className="mb-3 w-75 mx-auto"
                         controlId="formBasicPassword"
                       >
                         <Form.Control
+                          className="fs-4"
                           type="password"
                           placeholder="Password"
                           name="password"
@@ -66,23 +75,33 @@ const Login = () => {
                         className="mb-3"
                         controlId="formBasicCheckbox"
                       >
-                        <p className="small text-start mt-2 text-danger">
+                        <p className="small text-start mt-2 text-danger w-75 mx-auto">
                           {error}
                         </p>
                       </Form.Group>
-                      <div className="d-grid">
-                        <Button variant="primary" type="submit">
+                      <div className="d-grid ">
+                        <Button
+                          className="w-75 mx-auto fs-4 mt-3"
+                          variant="primary"
+                          type="submit"
+                        >
                           Login
                         </Button>
                       </div>
                       <div className="mt-3 ">
                         <ButtonGroup vertical className="w-100">
-                          <Button variant="outline-primary" className="mb-2">
+                          <Button
+                            variant="outline-primary"
+                            className="mb-3 w-75 mx-auto"
+                          >
                             <FaGoogle className="me-2" />
                             Google with Login
                           </Button>
-                          <Button variant="outline-dark">
-                            <FaGithub className="me-2" /> Github with login
+                          <Button
+                            variant="outline-dark"
+                            className="w-75 mx-auto"
+                          >
+                            <FaGithub className="me-2 " /> Github with login
                           </Button>
                         </ButtonGroup>
                       </div>

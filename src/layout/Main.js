@@ -4,9 +4,6 @@ import Header from "../shared/Header/Header";
 import { Outlet } from "react-router-dom";
 
 import Footer from "../shared/Footer/Footer";
-import { Col, Container, Row } from "react-bootstrap";
-import LeftSideNav from "../shared/LeftSideNav/LeftSideNav";
-import RightSideNav from "../shared/RightSideNav/RightSideNav";
 
 const Main = () => {
   return (
