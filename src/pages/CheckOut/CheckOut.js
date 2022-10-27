@@ -171,7 +171,7 @@ const CheckOut = () => {
                             />
                           </MDBCol>
                         </MDBRow>
-                        <Link to="/courses">
+                        <Link to="/">
                           <Button onClick={handleBuy} className="w-100 mt-5">
                             <h5>Purchase ${`${totalBill}`}</h5>
                           </Button>
