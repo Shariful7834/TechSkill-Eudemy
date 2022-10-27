@@ -2,12 +2,12 @@ import React from "react";
 import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { AuthContext } from "../../context/UserContext";
 import { toast } from "react-hot-toast";
 const Register = () => {
-  const { signUpUser, googleProvider, user, updateUserProfile } =
+  const { signUpUser, googleProvider, updateUserProfile } =
     useContext(AuthContext);
   const [error, setError] = useState();
   let navigate = useNavigate();

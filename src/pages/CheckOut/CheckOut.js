@@ -3,7 +3,6 @@ import { Button, Card, Col, Image, Row } from "react-bootstrap";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import {
-  MDBBtn,
   MDBCard,
   MDBCardBody,
   MDBCol,
@@ -37,6 +36,7 @@ const CheckOut = () => {
                 <Image
                   style={{ width: "150px", height: "90px" }}
                   src={image_url}
+                  alt=""
                 ></Image>
                 <div className="ms-4">
                   <h5 className="mb-0">{course_title}</h5>
@@ -100,6 +100,7 @@ const CheckOut = () => {
                           <img
                             className="img-fluid"
                             src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
+                            alt=""
                           />
                           <div className="flex-fill mx-3">
                             <div className="form-outline">
@@ -118,6 +119,7 @@ const CheckOut = () => {
                           <img
                             className="img-fluid"
                             src="https://img.icons8.com/color/48/000000/visa.png"
+                            alt=""
                           />
                           <div className="flex-fill mx-3">
                             <div className="form-outline">

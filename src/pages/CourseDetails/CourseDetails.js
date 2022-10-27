@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import "./CourseDetails.css";
-import { FaCartPlus, BsBarChartFill } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 import {
   BsCameraVideoFill,
   BsClock,
@@ -13,10 +13,12 @@ import {
   BsListCheck,
   BsStar,
 } from "react-icons/bs";
+import Pdf from "react-to-pdf";
 
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
   const { course_title, details, image_url, _id } = courseDetails;
+  const ref = React.createRef();
   return (
     <div>
       <div className="backgroundImg text-center pt-5">
@@ -27,11 +29,16 @@ const CourseDetails = () => {
         >
           {details}
         </h2>
-        <Button className="rounded-3 px-4 py-2 fs-5 mb-5">
-          <FaCartPlus className="me-2"></FaCartPlus>Enroll Now!
-        </Button>
+
+        <Pdf targetRef={ref} filename="code-example.pdf">
+          {({ toPdf }) => (
+            <Button className="rounded-3 px-4 py-2 fs-5 mb-5" onClick={toPdf}>
+              Download Pdf
+            </Button>
+          )}
+        </Pdf>
       </div>
-      <div className="container mt-5">
+      <div className="container mt-5" ref={ref}>
         <Row>
           <Col lg="7">
             <h1 className="mb-3">{course_title}</h1>

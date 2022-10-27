@@ -15,7 +15,7 @@ const RightSideNav = () => {
   }, []);
 
   return (
-    <Container className="vh-100 mt-5">
+    <Container className=" mt-5">
       <Row>
         <Col lg="9">
           <LeftSideNav></LeftSideNav>

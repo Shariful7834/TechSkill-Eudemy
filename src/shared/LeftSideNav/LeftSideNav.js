@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
 import Courses from "../../pages/Courses/Courses";
 
 const LeftSideNav = () => {
