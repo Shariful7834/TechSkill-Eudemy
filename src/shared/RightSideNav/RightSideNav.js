@@ -9,7 +9,7 @@ const RightSideNav = () => {
   const [courseCategories, setCourseCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/courses")
+    fetch("https://tech-skills-edu-server.vercel.app/courses")
       .then((res) => res.json())
       .then((data) => setCourseCategories(data));
   }, []);
@@ -31,7 +31,7 @@ const RightSideNav = () => {
               <Link
                 key={courseCategory.course_id}
                 style={{ textDecoration: "none", fontSize: "18px" }}
-                to={`/courseCategory/${courseCategory.course_id}`}
+                to={`/course/${courseCategory._id}`}
               >
                 <ListGroup>
                   <ListGroup.Item className="mb-2 linkHover">

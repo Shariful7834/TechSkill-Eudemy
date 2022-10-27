@@ -24,7 +24,7 @@ const Header = () => {
   //     .then((error) => console.error(error));
   // };
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand>
           <Link style={{ textDecoration: "none" }} to="/">

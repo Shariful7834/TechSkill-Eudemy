@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "./CourseDetails.css";
 import { FaCartPlus, BsBarChartFill } from "react-icons/fa";
 import {
@@ -16,7 +16,7 @@ import {
 
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
-  const { course_title, details, image_url } = courseDetails;
+  const { course_title, details, image_url, _id } = courseDetails;
   return (
     <div>
       <div className="backgroundImg text-center pt-5">
@@ -41,9 +41,11 @@ const CourseDetails = () => {
               where to start? Tired of lengthy, boring and outdated courses?
               This course is for you.
             </p>
-            <Button className="rounded-3 px-4 py-2 fs-5 mb-5">
-              <FaCartPlus className="me-2"></FaCartPlus>Get Premium Access
-            </Button>
+            <Link to={`/cartCourse/${_id}`}>
+              <Button className="rounded-3 px-4 py-2 fs-5 mb-5">
+                <FaCartPlus className="me-2"></FaCartPlus>Get Premium Access
+              </Button>
+            </Link>
           </Col>
           <Col lg="5">
             <Card className="border-0 mt-5">

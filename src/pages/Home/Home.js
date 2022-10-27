@@ -1,17 +1,15 @@
 import React from "react";
-import { AuthContext } from "../../context/UserContext";
-import { useContext } from "react";
 import Illustration from "../../assets/brands/Illustration.png";
 import { Button, Col, Image, Row } from "react-bootstrap";
 import "./Home.css";
 import book from "../../assets/icons/book.png";
 import Student from "../../assets/icons/Student.png";
-import Students from "../../assets/icons/Students.png";
+
 import Test from "../../assets/icons/Test.png";
 import Man from "../../assets/icons/Man.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
   return (
     <div>
       <div className="main-head">
@@ -28,16 +26,18 @@ const Home = () => {
                 Mollitia iusto rem dolores vitae repellendus, accusantium
                 explicabo.
               </p>
-              <Button className="mt-2 btn btn-primary">Get Started</Button>
+              <Link to="/courses">
+                <Button className="mt-2 btn btn-primary">Get Started</Button>
+              </Link>
             </Col>
             <Col md="6">
-              <img className="d-block w-100" src={Illustration} />
+              <img className="d-block w-100" src={Illustration} alt="" />
             </Col>
           </Row>
         </div>
       </div>
       {/* overview  */}
-      <section id="overview" className="container">
+      <section id="overview" className="container mt-5">
         <div className="card-deck">
           <Row>
             <Col md="3">

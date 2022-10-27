@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
+import CheckOut from "../pages/CheckOut/CheckOut";
 import CourseDetails from "../pages/CourseDetails/CourseDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
@@ -7,6 +8,7 @@ import LeftSideNav from "../shared/LeftSideNav/LeftSideNav";
 import Login from "../shared/Login/Login";
 import Register from "../shared/Register/Register";
 import RightSideNav from "../shared/RightSideNav/RightSideNav";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
   {
@@ -34,14 +36,30 @@ export const router = createBrowserRouter([
       {
         path: "/courseCategory/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(
+            `https://tech-skills-edu-server.vercel.app/course/${params.id}`
+          ),
         element: <LeftSideNav></LeftSideNav>,
       },
       {
         path: "/course/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(
+            `https://tech-skills-edu-server.vercel.app/course/${params.id}`
+          ),
         element: <CourseDetails></CourseDetails>,
+      },
+      {
+        path: "/cartCourse/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://tech-skills-edu-server.vercel.app/course/${params.id}`
+          ),
+        element: (
+          <PrivateRouter>
+            <CheckOut></CheckOut>
+          </PrivateRouter>
+        ),
       },
     ],
   },

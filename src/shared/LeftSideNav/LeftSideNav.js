@@ -7,7 +7,7 @@ const LeftSideNav = () => {
   const [courseCategories, setCourseCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/courses")
+    fetch("https://tech-skills-edu-server.vercel.app/courses")
       .then((res) => res.json())
       .then((data) => setCourseCategories(data));
   }, []);
@@ -18,7 +18,7 @@ const LeftSideNav = () => {
           <h1 className="text-center mb-5">
             This is left side for course {courseCategories.length}
           </h1>
-          <Row lg="3">
+          <Row lg="3" className="g-4">
             {courseCategories.map((course) => (
               <Courses key={course._id} course={course}></Courses>
             ))}
