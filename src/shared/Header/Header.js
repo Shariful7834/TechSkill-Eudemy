@@ -13,6 +13,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../context/UserContext";
 import logo from "../../assets/brands/logo1.png";
+import { BsCircleHalf } from "react-icons/bs";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -30,7 +31,7 @@ const Header = () => {
         <Navbar.Brand className="d-flex align-items-center">
           <Image
             roundedCircle
-            style={{ width: "80px", height: "80px" }}
+            style={{ width: "50px", height: "50px" }}
             src={logo}
             alt=""
             className="d-inline-block align-top"
@@ -49,7 +50,7 @@ const Header = () => {
                 textDecoration: "none",
                 marginRight: "20px",
                 color: "white",
-                fontSize: "22px",
+                fontSize: "20px",
               }}
               to="/courses"
             >
@@ -60,28 +61,29 @@ const Header = () => {
                 textDecoration: "none",
                 marginRight: "20px",
                 color: "white",
-                fontSize: "22px",
+                fontSize: "20px",
               }}
-              to="/courses"
+              to="/blogs"
             >
-              Pricing
+              <span>Blogs</span>
             </Link>
             <Link
               style={{
                 textDecoration: "none",
                 marginRight: "50px",
                 color: "white",
-                fontSize: "22px",
+                fontSize: "18px",
+                marginTop: "3px",
               }}
-              to="/blogs"
+              to="/faq"
             >
-              Blogs
+              <span>FAQ</span>
             </Link>
           </Nav>
           <Nav>
             {user?.uid ? (
               <Button
-                className="fs-5 me-3 text-white "
+                className="fs-6 me-3 text-white mt-3 "
                 variant="outline-success"
                 style={{ height: "40px", marginTop: "5px" }}
                 onClick={logOut}
@@ -90,9 +92,13 @@ const Header = () => {
               </Button>
             ) : (
               <>
-                <Button className="fs-5 me-3 " variant="outline-success">
+                <Button className=" me-3 " variant="outline-success">
                   <Link
-                    style={{ textDecoration: "none", color: "white" }}
+                    style={{
+                      textDecoration: "none",
+                      color: "white",
+                      fontSize: "20px",
+                    }}
                     className="me-3 "
                     to="/login"
                   >
@@ -100,10 +106,14 @@ const Header = () => {
                   </Link>
                 </Button>
 
-                <Button className="fs-5 me-3  " variant="outline-success">
+                <Button className=" me-3  " variant="outline-success">
                   {" "}
                   <Link
-                    style={{ textDecoration: "none", color: "white" }}
+                    style={{
+                      textDecoration: "none",
+                      color: "white",
+                      fontSize: "20px",
+                    }}
                     to="/register"
                   >
                     Register
@@ -132,7 +142,11 @@ const Header = () => {
                         >
                           <Image
                             roundedCircle
-                            style={{ height: "40px", width: "40px" }}
+                            style={{
+                              height: "40px",
+                              width: "40px",
+                              marginTop: "8px",
+                            }}
                             src={user?.photoURL}
                             ref={ref}
                           />
@@ -142,12 +156,21 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <FaUserAlt></FaUserAlt>
+                    <FaUserAlt
+                      style={{ width: "23px", height: "23px" }}
+                    ></FaUserAlt>
                   </>
                 )}
               </Nav.Link>
             </div>
           </Nav>
+          <Nav.Link>
+            <BsCircleHalf
+              style={{ width: "23px", height: "23px" }}
+              className="ms-3 text-white"
+            ></BsCircleHalf>{" "}
+            <span className="fs-6 text-white">DarkMode</span>
+          </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

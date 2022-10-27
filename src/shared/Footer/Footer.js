@@ -119,7 +119,7 @@ const Footer = () => {
                     placeholder="Email address"
                   />
                   <Button
-                    className="p-2 m-0 btn-outline"
+                    className="px-3 py-0 m-0 btn-outline"
                     variant="outline-primary "
                   >
                     Subscribe

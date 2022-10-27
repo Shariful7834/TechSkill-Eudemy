@@ -7,7 +7,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { AuthContext } from "../../context/UserContext";
 import { toast } from "react-hot-toast";
 const Register = () => {
-  const { signUpUser, googleProvider, updateUserProfile } =
+  const { signUpUser, googleProvider, updateUserProfile, githubProvider } =
     useContext(AuthContext);
   const [error, setError] = useState();
   let navigate = useNavigate();
@@ -61,6 +61,15 @@ const Register = () => {
       })
       .catch((error) => console.error(error));
   };
+  const handlerGitHub = () => {
+    githubProvider()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div>
@@ -78,7 +87,10 @@ const Register = () => {
                   </p>
                   <div className="mb-3">
                     <Form onSubmit={handleSignUp}>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Group
+                        className="mb-3 w-75 mx-auto"
+                        controlId="formBasicEmail"
+                      >
                         <Form.Control
                           type="text"
                           name="name"
@@ -86,7 +98,10 @@ const Register = () => {
                           required
                         />
                       </Form.Group>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Group
+                        className="mb-3 w-75 mx-auto"
+                        controlId="formBasicEmail"
+                      >
                         <Form.Control
                           type="text"
                           name="photoURL"
@@ -95,7 +110,10 @@ const Register = () => {
                         />
                       </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Group
+                        className="mb-3 w-75 mx-auto"
+                        controlId="formBasicEmail"
+                      >
                         <Form.Control
                           type="email"
                           name="email"
@@ -105,7 +123,7 @@ const Register = () => {
                       </Form.Group>
 
                       <Form.Group
-                        className="mb-3"
+                        className="mb-3 w-75 mx-auto"
                         controlId="formBasicPassword"
                       >
                         <Form.Control
@@ -116,7 +134,7 @@ const Register = () => {
                         />
                       </Form.Group>
                       <Form.Group
-                        className="mb-3"
+                        className="mb-5 w-75 mx-auto"
                         controlId="formBasicPassword"
                       >
                         <Form.Control
@@ -127,7 +145,7 @@ const Register = () => {
                         />
                       </Form.Group>
                       <Form.Group
-                        className="mb-3"
+                        className="mb-3 w-75 mx-auto"
                         controlId="formBasicCheckbox"
                       >
                         <p className="small text-start mt-2 text-danger">
@@ -135,21 +153,28 @@ const Register = () => {
                         </p>
                       </Form.Group>
                       <div className="d-grid">
-                        <Button variant="primary" type="submit">
+                        <Button
+                          className="mb-3 w-75 mx-auto fs-4"
+                          variant="primary"
+                          type="submit"
+                        >
                           Submit
                         </Button>
                       </div>
-                      <div className="mt-3 ">
+                      <div className="mt-3 mb-4 w-75 mx-auto ">
                         <ButtonGroup vertical className="w-100">
                           <Button
                             onClick={handleGoogle}
                             variant="outline-primary"
-                            className="mb-3"
+                            className="mb-4"
                           >
                             <FaGoogle className="me-2" />
                             Sign Up with Google
                           </Button>
-                          <Button variant="outline-dark">
+                          <Button
+                            onClick={handlerGitHub}
+                            variant="outline-dark"
+                          >
                             <FaGithub className="me-2" /> Github Sign Up
                           </Button>
                         </ButtonGroup>

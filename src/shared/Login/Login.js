@@ -67,7 +67,7 @@ const Login = () => {
                   <div className="mb-3">
                     <Form onSubmit={handleSignIn}>
                       <Form.Group
-                        className="mb-3 w-75 mx-auto "
+                        className="mb-3 w-75 mx-auto"
                         controlId="formBasicEmail"
                       >
                         <Form.Control
@@ -108,12 +108,12 @@ const Login = () => {
                           Login
                         </Button>
                       </div>
-                      <div className="mt-3 ">
+                      <div className="mt-5 ">
                         <ButtonGroup vertical className="w-100">
                           <Button
                             onClick={handleGoogle}
                             variant="outline-primary"
-                            className="mb-3 w-75 mx-auto"
+                            className="mb-4 w-75 mx-auto"
                           >
                             <FaGoogle className="me-2" />
                             Google with Login

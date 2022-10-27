@@ -4,6 +4,8 @@ import CheckOut from "../pages/CheckOut/CheckOut";
 import CourseDetails from "../pages/CourseDetails/CourseDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
+import Blogs from "../shared/Blogs/Blogs";
+import FAQ from "../shared/FAQ/FAQ";
 import LeftSideNav from "../shared/LeftSideNav/LeftSideNav";
 import Login from "../shared/Login/Login";
 import Register from "../shared/Register/Register";
@@ -60,6 +62,14 @@ export const router = createBrowserRouter([
             <CheckOut></CheckOut>
           </PrivateRouter>
         ),
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/faq",
+        element: <FAQ></FAQ>,
       },
     ],
   },

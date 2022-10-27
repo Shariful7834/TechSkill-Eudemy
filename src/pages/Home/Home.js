@@ -22,9 +22,9 @@ const Home = () => {
                 <span className="primary-highlight">any schedule</span>
               </h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Mollitia iusto rem dolores vitae repellendus, accusantium
-                explicabo.
+                Learning anything is fun! this course will provide the precise
+                and clear concept about programming. There are many life
+                changing courses...
               </p>
               <Link to="/courses">
                 <Button className="mt-2 btn btn-primary">Get Started</Button>

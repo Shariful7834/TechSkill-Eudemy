@@ -42,14 +42,14 @@ const CourseDetails = () => {
         <Row>
           <Col lg="7">
             <h1 className="mb-3">{course_title}</h1>
-            <img className="img-fluid" src={image_url} alt="" />
-            <p className="mt-3 fs-4">
+            <img className="img-fluid w-75" src={image_url} alt="" />
+            <p className="mt-4 fs-5 me-5">
               Have you always wanted to learn web development but didn't know
               where to start? Tired of lengthy, boring and outdated courses?
               This course is for you.
             </p>
             <Link to={`/cartCourse/${_id}`}>
-              <Button className="rounded-3 px-4 py-2 fs-5 mb-5">
+              <Button className="rounded-3 px-4 py-2 fs-4 mb-5 mt-5 text-white bg-success">
                 <FaCartPlus className="me-2"></FaCartPlus>Get Premium Access
               </Button>
             </Link>
