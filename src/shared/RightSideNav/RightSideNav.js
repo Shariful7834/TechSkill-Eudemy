@@ -21,7 +21,7 @@ const RightSideNav = () => {
           <LeftSideNav></LeftSideNav>
         </Col>
         <Col lg="3">
-          <div>
+          <div className="mt-5 pt-5">
             <BrandCarosoul></BrandCarosoul>
           </div>
           <hr />

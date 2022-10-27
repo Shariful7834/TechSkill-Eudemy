@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../context/UserContext";
+import logo from "../../assets/brands/logo1.png";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -26,22 +27,29 @@ const Header = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand className="d-flex align-items-center">
+          <Image
+            roundedCircle
+            style={{ width: "80px", height: "80px" }}
+            src={logo}
+            alt=""
+            className="d-inline-block align-top"
+          />
           <Link style={{ textDecoration: "none" }} to="/">
-            <h2 className="text-warning">
-              Tech <span className="text-success">Skills</span> EDU
+            <h2 style={{ color: "tomato" }} className=" fs-1 py-2 ms-2">
+              Tech <span style={{ color: "#21b573" }}>Skills</span> EDU
             </h2>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mx-auto  ">
+          <Nav className="ms-auto ">
             <Link
               style={{
                 textDecoration: "none",
                 marginRight: "20px",
                 color: "white",
-                fontSize: "20px",
+                fontSize: "22px",
               }}
               to="/courses"
             >
@@ -52,7 +60,7 @@ const Header = () => {
                 textDecoration: "none",
                 marginRight: "20px",
                 color: "white",
-                fontSize: "20px",
+                fontSize: "22px",
               }}
               to="/courses"
             >
@@ -61,9 +69,9 @@ const Header = () => {
             <Link
               style={{
                 textDecoration: "none",
-                marginRight: "20px",
+                marginRight: "50px",
                 color: "white",
-                fontSize: "20px",
+                fontSize: "22px",
               }}
               to="/blogs"
             >
@@ -73,23 +81,37 @@ const Header = () => {
           <Nav>
             {user?.uid ? (
               <Button
+                className="fs-5 me-3 text-white "
+                variant="outline-success"
                 style={{ height: "40px", marginTop: "5px" }}
                 onClick={logOut}
               >
                 LogOut
               </Button>
             ) : (
-              <div className="fs-4 ">
-                <Link className="me-3 " to="/login">
-                  Login
-                </Link>
-                <Link to="/register">Register</Link>
-              </div>
+              <>
+                <Button className="fs-5 me-3 " variant="outline-success">
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    className="me-3 "
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </Button>
+
+                <Button className="fs-5 me-3  " variant="outline-success">
+                  {" "}
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to="/register"
+                  >
+                    Register
+                  </Link>
+                </Button>
+              </>
             )}
-            <Nav.Link
-              style={{ height: "40px", marginTop: "5px" }}
-              href="#deets"
-            ></Nav.Link>
+
             <div>
               <Nav.Link>
                 {user?.uid ? (

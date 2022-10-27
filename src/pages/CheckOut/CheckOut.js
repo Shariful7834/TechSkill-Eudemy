@@ -85,19 +85,12 @@ const CheckOut = () => {
               </Link>
             </div>
             <div className="mt-5">
-              <h2>Payment Method</h2>{" "}
-              <MDBContainer
-                className="py-1"
-                fluid
-                style={{
-                  backgroundImage:
-                    "url(https://mdbcdn.b-cdn.net/img/Photos/Others/background3.webp)",
-                }}
-              >
+              <h2 className="ms-2">Payment Method</h2>{" "}
+              <MDBContainer className="py-1">
                 <MDBRow className=" d-flex justify-content-center">
                   <MDBCol>
                     <MDBCard className="rounded-3">
-                      <MDBCardBody className="p-4">
+                      <MDBCardBody className="p-3">
                         <div className="text-center mb-4">
                           <h3>Settings</h3>
                           <h6>Payment</h6>

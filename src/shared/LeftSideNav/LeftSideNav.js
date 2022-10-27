@@ -15,9 +15,7 @@ const LeftSideNav = () => {
     <Container>
       <Row>
         <Col lg="12">
-          <h1 className="text-center mb-5">
-            This is left side for course {courseCategories.length}
-          </h1>
+          <h1 className="text-center mb-4">A broad selection of courses </h1>
           <Row lg="3" className="g-4">
             {courseCategories.map((course) => (
               <Courses key={course._id} course={course}></Courses>

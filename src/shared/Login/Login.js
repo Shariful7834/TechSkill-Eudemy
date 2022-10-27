@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/UserContext";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const { signIn, user } = useContext(AuthContext);
+  const { signIn, googleProvider, githubProvider } = useContext(AuthContext);
   const [error, setError] = useState("");
   let navigate = useNavigate();
   let location = useLocation();
@@ -32,6 +32,25 @@ const Login = () => {
         setError(error.message);
       });
   };
+  const handleGoogle = () => {
+    googleProvider()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handlerGitHub = () => {
+    githubProvider()
+      .then((result) => {
+        const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div>
       <Container className="vh-100 mt-5">
@@ -91,6 +110,7 @@ const Login = () => {
                       <div className="mt-3 ">
                         <ButtonGroup vertical className="w-100">
                           <Button
+                            onClick={handleGoogle}
                             variant="outline-primary"
                             className="mb-3 w-75 mx-auto"
                           >
@@ -98,6 +118,7 @@ const Login = () => {
                             Google with Login
                           </Button>
                           <Button
+                            onClick={handlerGitHub}
                             variant="outline-dark"
                             className="w-75 mx-auto"
                           >
