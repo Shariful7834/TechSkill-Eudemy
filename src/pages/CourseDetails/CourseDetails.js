@@ -41,6 +41,9 @@ const CourseDetails = () => {
               where to start? Tired of lengthy, boring and outdated courses?
               This course is for you.
             </p>
+            <Button className="rounded-3 px-4 py-2 fs-5 mb-5">
+              <FaCartPlus className="me-2"></FaCartPlus>Get Premium Access
+            </Button>
           </Col>
           <Col lg="5">
             <Card className="border-0 mt-5">
