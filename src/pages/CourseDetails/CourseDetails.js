@@ -49,7 +49,7 @@ const CourseDetails = () => {
               This course is for you.
             </p>
             <Link to={`/cartCourse/${_id}`}>
-              <Button className="rounded-3 px-4 py-2 fs-4 mb-5 mt-5 text-white bg-success">
+              <Button className="rounded-3 px-4 py-2 fs-4 mb-5 mt-5 text-white bg-success border-0">
                 <FaCartPlus className="me-2"></FaCartPlus>Get Premium Access
               </Button>
             </Link>
