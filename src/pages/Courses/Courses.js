@@ -14,7 +14,7 @@ const Courses = ({ course }) => {
           <Card.Text>{details}</Card.Text>
           <div className="d-flex justify-content-between align-items-center">
             <Link to={`/course/${_id}`}>
-              <Button variant="primary">Course Details</Button>
+              <Button variant="primary">View Details</Button>
             </Link>
             <div>
               <span>
