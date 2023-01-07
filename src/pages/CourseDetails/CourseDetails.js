@@ -67,7 +67,7 @@ const CourseDetails = () => {
                   <BsFillBellFill></BsFillBellFill> LIFETIME ACCESS
                 </ListGroup.Item>
                 <ListGroup.Item className="py-3">
-                  <BsClock></BsClock> 150 LESSIONS
+                  <BsClock></BsClock> 140 LESSIONS
                 </ListGroup.Item>
                 <ListGroup.Item className="py-3">
                   <BsListCheck></BsListCheck> CHEAT SHEETS
